@@ -1,0 +1,53 @@
+# Environments
+.env
+.venv
+venv/
+ENV/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Data and Logs
+data/
+logs/
+*.log
+*.xlsx
+*.xls
+*.csv
+*.tmp
+*.bak
+
+# Configuration (contains credentials)
+config.json
+lazada_config.json
+shopee_config.json
+tiktok_config.json
+*_config.json
+
+# Browser Profiles
+browser_data/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
