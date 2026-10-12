@@ -1,3 +1,4 @@
+from automation.paths import find_edge_path
 import os
 import time
 from playwright.sync_api import sync_playwright
@@ -15,7 +16,7 @@ class ShopeeAutomator:
         if config:
             self.download_dir = config.get("shopee_download_dir")
         else:
-            self.download_dir = r"C:\Users\thu.mai.dinh\OneDrive - DKSH\1. Order processing\2. Energizer\ORDERS"
+            self.download_dir = os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\1. Order processing\2. Energizer\ORDERS")
         
         # Đảm bảo thư mục tồn tại
         if self.download_dir:
@@ -54,7 +55,7 @@ class ShopeeAutomator:
                 time.sleep(2)
                 
                 # Tự gọi Edge theo thiết đặt
-                edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+                edge_path = find_edge_path()
                 profile_dir = r"C:\ShopeeEdgeProfile"
                 subprocess.Popen([edge_path, "--remote-debugging-port=9222", f"--user-data-dir={profile_dir}"])
                 

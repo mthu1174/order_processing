@@ -10,15 +10,15 @@ class ConfigManager:
     def load_config(self):
         """Tải cấu hình từ file config.json hoặc tạo mới nếu chưa có"""
         default_config = {
-            "shopee_download_dir": r"C:\Users\thu.mai.dinh\OneDrive - DKSH\1. Order processing\2. Energizer\ORDERS",
-            "sap_export_dir": r"C:\Users\thu.mai.dinh\OneDrive - DKSH\1. Order processing\2. Energizer\SAP",
-            "sharepoint_template_path": r"C:\Users\thu.mai.dinh\OneDrive - DKSH\1. Order processing\2. Energizer\Template Energizer_14.07.xlsx",
-            "ghn_upload_template_path": r"C:\Users\thu.mai.dinh\OneDrive - DKSH\1. Order processing\2. Energizer\DKSH_ENERGIZER_07.04.xlsx",
-            "ghn_output_dir": r"C:\Users\thu.mai.dinh\OneDrive - DKSH\1. Order processing\2. Energizer\GHN_RETURN",
+            "shopee_download_dir": os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\1. Order processing\2. Energizer\ORDERS"),
+            "sap_export_dir": os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\1. Order processing\2. Energizer\SAP"),
+            "sharepoint_template_path": os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\1. Order processing\2. Energizer\Template Energizer_14.07.xlsx"),
+            "ghn_upload_template_path": os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\1. Order processing\2. Energizer\DKSH_ENERGIZER_07.04.xlsx"),
+            "ghn_output_dir": os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\1. Order processing\2. Energizer\GHN_RETURN"),
             "sap_tcode": "YSD_OC_GEN_R004",
             "sap_variant": "ecom",
-            "handover_source_file": r"C:\Users\thu.mai.dinh\OneDrive - DKSH\1. Order processing\4. Pending_dontUse\PENDING_ORDER_CHECK 1.xlsx",
-            "handover_processed_dir": r"C:\Users\thu.mai.dinh\OneDrive - DKSH\1. Order processing\4. Pending_dontUse\Processed Files"
+            "handover_source_file": os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\1. Order processing\4. Pending_dontUse\PENDING_ORDER_CHECK 1.xlsx"),
+            "handover_processed_dir": os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\1. Order processing\4. Pending_dontUse\Processed Files")
         }
 
         if not os.path.exists(self.config_path):

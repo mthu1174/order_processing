@@ -378,7 +378,7 @@ class AnchantoReportView(BaseView):
         sap_file = self.pipeline_context.get("sap_file")
         if not sap_file:
             self.log("[INFO] Không tìm thấy kết quả từ bước trước, đang tìm file SAP mới nhất...")
-            sap_dir = self.config_manager.get("sap_final_path", r"C:\Users\thu.mai.dinh\OneDrive - DKSH\Operation CG - 7. Order Dropship Monitor\5. SAP")
+            sap_dir = self.config_manager.get("sap_final_path", os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\Operation CG - 7. Order Dropship Monitor\5. SAP"))
             
             if os.path.exists(sap_dir):
                 max_num = -1

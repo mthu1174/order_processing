@@ -1,3 +1,4 @@
+from automation.paths import find_edge_path
 import os
 import time
 import json
@@ -16,7 +17,7 @@ class ShopeeOrderAutomator:
     """
 
     BASE_URL = "https://banhang.shopee.vn/portal/sale/order"
-    EDGE_PATH = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+    EDGE_PATH = find_edge_path()
     CDP_PORT = 9222
 
     def __init__(self, log_callback, app_dir, config=None):

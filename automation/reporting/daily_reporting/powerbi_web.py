@@ -1,3 +1,4 @@
+from automation.paths import find_edge_path
 import time
 from playwright.sync_api import sync_playwright
 
@@ -29,7 +30,7 @@ class PowerBIWebAutomator:
                 time.sleep(2)
                 
                 # Khởi động Edge thật với profile
-                edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+                edge_path = find_edge_path()
                 profile_dir = r"C:\ShopeeEdgeProfile"
                 subprocess.Popen([edge_path, "--remote-debugging-port=9222", f"--user-data-dir={profile_dir}"])
                 time.sleep(10) # Cho Power BI thời gian load nặng

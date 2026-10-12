@@ -13,8 +13,8 @@ class HandoverOrderAutomation:
         self.log_callback(message)
 
     def process(self):
-        source_file = r"C:\Users\thu.mai.dinh\OneDrive - DKSH\1. Order processing\4. Pending_dontUse\PENDING_ORDER_CHECK 1.xlsx"
-        processed_dir = r"C:\Users\thu.mai.dinh\OneDrive - DKSH\1. Order processing\4. Pending_dontUse\Processed Files"
+        source_file = os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\1. Order processing\4. Pending_dontUse\PENDING_ORDER_CHECK 1.xlsx")
+        processed_dir = os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\1. Order processing\4. Pending_dontUse\Processed Files")
         
         if self.config_manager:
             source_file = self.config_manager.get("handover_source_file", source_file)

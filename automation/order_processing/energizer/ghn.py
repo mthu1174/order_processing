@@ -1,3 +1,4 @@
+from automation.paths import find_edge_path
 import os
 import time
 from playwright.sync_api import sync_playwright
@@ -31,7 +32,7 @@ class GHNAutomator:
         time.sleep(2)
         
         # 2. Khởi động Edge thật với profile Shopee để dùng chung cookie/đăng nhập
-        edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+        edge_path = find_edge_path()
         profile_dir = r"C:\ShopeeEdgeProfile"
         subprocess.Popen([edge_path, "--remote-debugging-port=9222", f"--user-data-dir={profile_dir}"])
         time.sleep(7) # Tăng thêm thời gian chờ Edge bung hẳn

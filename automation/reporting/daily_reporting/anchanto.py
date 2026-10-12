@@ -1,3 +1,4 @@
+from automation.paths import find_edge_path
 import os
 import time
 import re
@@ -11,7 +12,7 @@ class AnchantoAutomator:
         self.config = config
         self.login_url = config.get("anchanto_url", "https://apac-oms.anchanto.com/login")
         self.temp_download_dir = config.get("anchanto_download_dir", os.path.join(app_dir, "data", "reporting"))
-        self.final_dest_dir = config.get("anchanto_final_path", r"C:\Users\thu.mai.dinh\OneDrive - DKSH\Operation CG - 7. Order Dropship Monitor\A. Anchanto")
+        self.final_dest_dir = config.get("anchanto_final_path", os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\Operation CG - 7. Order Dropship Monitor\A. Anchanto"))
         self.days_prior = int(config.get("anchanto_days_prior", 2))
         
         os.makedirs(self.temp_download_dir, exist_ok=True)
@@ -39,7 +40,7 @@ class AnchantoAutomator:
                 time.sleep(2)
                 
                 # 2. Khởi động Edge thật với profile
-                edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+                edge_path = find_edge_path()
                 profile_dir = r"C:\ShopeeEdgeProfile"
                 subprocess.Popen([edge_path, "--remote-debugging-port=9222", f"--user-data-dir={profile_dir}"])
                 time.sleep(7)

@@ -64,7 +64,7 @@ class SAPAutomator:
             
             # --- XÁC ĐỊNH ĐƯỜNG DẪN VÀ TÊN FILE THEO SUBTYPE ---
             if export_subtype == "Reporting":
-                export_dir = r"C:\Users\thu.mai.dinh\OneDrive - DKSH\Operation CG - 7. Order Dropship Monitor\5. SAP"
+                export_dir = (self.config.get("sap_final_path") if self.config else None) or os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\Operation CG - 7. Order Dropship Monitor\5. SAP")
                 # Tìm số thứ tự lớn nhất trong folder (0, 1, 2, 3...)
                 max_num = -1
                 if os.path.exists(export_dir):
@@ -78,7 +78,7 @@ class SAPAutomator:
                 export_name = f"{max_num + 1}.xlsx"
                 self.log(f"[SAP] Chế độ Reporting: Sẽ lưu file là '{export_name}'")
             else:
-                export_dir = r"C:\Users\thu.mai.dinh\OneDrive - DKSH\1. Order processing\2. Energizer\SAP"
+                export_dir = os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\1. Order processing\2. Energizer\SAP")
                 export_name = "sap_energizer_data.xlsx"
 
             export_file_path = os.path.join(export_dir, export_name)
@@ -303,7 +303,7 @@ class SAPAutomator:
             pythoncom.CoInitialize()
             
             # --- TÍNH TÊN FILE MỚI CHO REPORTING ---
-            export_dir = r"C:\Users\thu.mai.dinh\OneDrive - DKSH\Operation CG - 7. Order Dropship Monitor\5. SAP"
+            export_dir = (self.config.get("sap_final_path") if self.config else None) or os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\Operation CG - 7. Order Dropship Monitor\5. SAP")
             max_num = -1
             if os.path.exists(export_dir):
                 for f in os.listdir(export_dir):

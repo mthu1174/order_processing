@@ -1,3 +1,4 @@
+from automation.paths import find_edge_path
 import os
 import time
 import json
@@ -17,7 +18,7 @@ class TikTokTicketAutomator:
     """
 
     TICKET_URL = "https://seller-vn.tiktok.com/ticket/create?shop_region=VN"
-    EDGE_PATH = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+    EDGE_PATH = find_edge_path()
     CDP_PORT = 9223  # Khác port với Shopee (9222)
 
     # Delays (seconds) — dựa trên UiPath timing
