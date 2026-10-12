@@ -51,3 +51,6 @@ browser_data/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Crash log
+error.log
