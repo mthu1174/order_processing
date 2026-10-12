@@ -14,7 +14,7 @@ if %errorlevel% neq 0 (
 
 :: 2. Tao moi truong ao neu chua co
 if not exist .venv (
-    echo [HE THONG] Dang tao moi truong ao (.venv)...
+    echo [HE THONG] Dang tao moi truong ao .venv ...
     python -m venv .venv
 )
 
