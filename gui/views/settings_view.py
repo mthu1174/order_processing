@@ -116,8 +116,8 @@ class SettingsView(BaseView):
             val = entry.get()
             # Try to convert to int if it's days_prior
             if key == "anchanto_days_prior":
-                try: val = int(val)
-                except: pass
+                try: val = int(str(val).strip())
+                except ValueError: val = 2  # o trong / nhap sai -> mac dinh 2 ngay
             new_config[key] = val
         
         if self.config_manager.save_config(new_config):

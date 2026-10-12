@@ -5,6 +5,14 @@ import re
 import datetime
 from playwright.sync_api import sync_playwright
 
+
+def _safe_int(value, default):
+    """Doi sang int; o trong hoac nhap sai thi dung gia tri mac dinh."""
+    try:
+        return int(str(value).strip())
+    except (TypeError, ValueError):
+        return default
+
 class AnchantoAutomator:
     def __init__(self, log_callback, app_dir, config=None):
         self.log = log_callback
@@ -13,7 +21,7 @@ class AnchantoAutomator:
         self.login_url = config.get("anchanto_url", "https://apac-oms.anchanto.com/login")
         self.temp_download_dir = config.get("anchanto_download_dir", os.path.join(app_dir, "data", "reporting"))
         self.final_dest_dir = config.get("anchanto_final_path", os.path.join(os.path.expanduser("~"), r"OneDrive - DKSH\Operation CG - 7. Order Dropship Monitor\A. Anchanto"))
-        self.days_prior = int(config.get("anchanto_days_prior", 2))
+        self.days_prior = _safe_int(config.get("anchanto_days_prior"), 2)
         
         os.makedirs(self.temp_download_dir, exist_ok=True)
         if not os.path.exists(self.final_dest_dir):
@@ -246,7 +254,7 @@ class AnchantoAutomator:
                 else:
                     actual_days = (end_dt - start_dt).days + 1
                     default_wait = 30 if actual_days <= 2 else (30 + (actual_days - 2) * 15)
-                    max_wait_minutes = int(self.config.get("anchanto_timeout_minutes", default_wait))
+                    max_wait_minutes = _safe_int(self.config.get("anchanto_timeout_minutes"), default_wait)
                     self.log(f"[ANCHANTO] Thời gian chờ tối đa được set là {max_wait_minutes} phút (cho {actual_days} ngày)")
                 
                 start_wait_time = time.time()
